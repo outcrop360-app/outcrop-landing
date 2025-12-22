@@ -1,49 +1,134 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algo está llegando... | outcrop360</title>
+    <title>Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            /* Variables de color */
+            --brand-color: #9E4632;
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-secondary: #444444;
+        }
+
+        /* Detección de Modo Claro */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #ffffff;
+                --text-main: #000000;
+                --text-secondary: #888888;
+            }
+        }
+
         body { 
-            background-color: #050505; 
-            color: #ffffff; 
-            font-family: -apple-system, system-ui, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            font-family: 'Montserrat', sans-serif; 
             display: flex; 
+            flex-direction: column;
             justify-content: center; 
             align-items: center; 
             height: 100vh; 
             margin: 0; 
+            transition: background-color 0.3s ease;
         }
+
+        /* Selector de Idioma */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--brand-color);
+            color: var(--brand-color);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            border-radius: 4px;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--brand-color);
+            color: white;
+        }
+
         .content { text-align: center; padding: 20px; }
+
+        /* Logo 3 veces más grande (aprox 300px-360px) */
         .logo { 
-            width: 120px; 
+            width: 350px; 
+            max-width: 80%;
             height: auto; 
-            margin-bottom: 40px; 
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+            margin-bottom: 50px; 
         }
+
         h1 { 
-            font-size: 1.8rem; 
-            letter-spacing: 12px; 
-            font-weight: 200; 
-            text-transform: uppercase; 
+            font-family: 'Lexend', sans-serif;
+            font-size: 2.5rem; 
+            letter-spacing: 10px; 
+            color: var(--brand-color); 
             margin: 0; 
+            text-transform: uppercase; 
         }
+
         p { 
-            color: #444; 
-            font-size: 0.8rem; 
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-secondary); 
+            font-size: 1rem; 
             margin-top: 20px; 
-            letter-spacing: 4px; 
+            letter-spacing: 5px; 
+            font-weight: 300;
         }
+
+        /* Animación */
         .blink { animation: pulse 3s infinite ease-in-out; }
-        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes pulse { 
+            0%, 100% { opacity: 0.4; } 
+            50% { opacity: 1; } 
+        }
+
+        /* Ocultar inicialmente el idioma que no es por defecto */
+        [lang="es"] { display: none; }
     </style>
 </head>
 <body>
-    <div class="content">
-        <img src="outcrop.png" alt="Logo outcrop360" class="logo">
-        <h1 class="blink">Próximamente</h1>
-        <p>EL FUTURO DE OUTCROP360 SE ESTÁ COMPILANDO</p>
+
+    <div class="lang-switch">
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('es')">ES</button>
     </div>
+
+    <div class="content">
+        <img src="outcrop.png" alt="Logo" class="logo">
+        
+        <h1 id="title" class="blink">Coming Soon</h1>
+        <p id="subtitle">SOMETHING NEW IS BEING COMPILED</p>
+    </div>
+
+    <script>
+        function setLanguage(lang) {
+            const title = document.getElementById('title');
+            const subtitle = document.getElementById('subtitle');
+
+            if (lang === 'es') {
+                title.innerText = 'Próximamente';
+                subtitle.innerText = 'ALGO NUEVO SE ESTÁ COMPILANDO';
+                document.documentElement.lang = 'es';
+            } else {
+                title.innerText = 'Coming Soon';
+                subtitle.innerText = 'SOMETHING NEW IS BEING COMPILED';
+                document.documentElement.lang = 'en';
+            }
+        }
+    </script>
 </body>
 </html>
