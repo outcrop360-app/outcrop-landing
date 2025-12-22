@@ -116,14 +116,14 @@
 
         /* Estilo para el pequeño aviso de Coming Soon / Próximamente */
         .status-tag {
-            font-size: 0.6em; 
+            font-size: 0.6em;         /* Tamaño aumentado para que sea legible */
             display: block; 
-            opacity: 0.9; 
-            letter-spacing: 8px; 
-            margin-bottom: 10px;
-            font-weight: 700;
+            opacity: 1;              /* Opacidad total para que resalte */
+            color: var(--text-main);  /* Cambiado a blanco (o negro en modo claro) */
+            letter-spacing: 10px;    /* Un poco más de espacio entre letras para estilo "premium" */
+            margin-bottom: 12px;
+            font-weight: 700;        /* Negrita para diferenciarlo del cuerpo */
         }
-
         p { 
             color: var(--text-secondary); 
             font-size: clamp(0.65rem, 3vw, 0.85rem); 
