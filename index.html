@@ -40,21 +40,22 @@
             transition: all 0.5s ease;
         }
 
-        /* Selector Píldora Glassmorphism Mejorado */
+        /* Selector Píldora Glassmorphism Corregido */
         .lang-wrapper {
             position: absolute;
-            top: 50px; /* Un poco más de aire desde arriba */
+            top: 30px; 
+            right: 30px; /* Ubicado en la esquina superior derecha */
             display: flex;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            padding: 5px;
             border-radius: 100px;
-            width: 140px; /* Tamaño más equilibrado */
-            height: 42px;
+            width: 120px; 
+            height: 38px; /* Altura fija para control total */
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             z-index: 100;
+            overflow: hidden; /* Para que el slider no se salga de las curvas */
         }
 
         .lang-option {
@@ -63,48 +64,47 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
             color: var(--text-main);
             z-index: 2;
             transition: color 0.3s ease;
+            height: 100%; /* Ocupa toda la altura */
         }
 
-        /* El deslizador (La parte que se mueve) */
+        /* El deslizador ajustado al 100% de la altura */
         .slider {
             position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 65px;
-            height: 32px;
+            top: 0;
+            left: 0;
+            width: 50%; /* Exactamente la mitad */
+            height: 100%;
             background: var(--brand-color);
             border-radius: 100px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
-            box-shadow: 0 4px 15px rgba(158, 70, 50, 0.4);
+            box-shadow: 0 0 15px rgba(158, 70, 50, 0.4);
         }
 
-        /* Lógica del movimiento */
+        /* Movimiento exacto del slider */
         .lang-wrapper[data-lang="es"] .slider {
-            transform: translateX(65px);
+            transform: translateX(100%);
         }
 
-        /* Contenido Principal */
         .content { 
             text-align: center; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
-        /* Logo 3 veces más grande */
         .logo { 
             width: 380px; 
             max-width: 85vw;
             height: auto; 
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         h1 { 
@@ -126,7 +126,6 @@
             text-transform: uppercase;
         }
 
-        /* Animación Blink */
         .blink { animation: pulse 4s infinite ease-in-out; }
         @keyframes pulse { 
             0%, 100% { opacity: 0.4; } 
@@ -154,10 +153,8 @@
             const subtitle = document.getElementById('subtitle');
             const wrapper = document.getElementById('langWrapper');
 
-            // Mueve el deslizador
             wrapper.setAttribute('data-lang', lang);
 
-            // Cambia los textos
             if (lang === 'es') {
                 title.textContent = 'Próximamente';
                 subtitle.textContent = 'Algo nuevo se está compilando';
