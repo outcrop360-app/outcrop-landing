@@ -45,26 +45,36 @@
             overflow-y: auto; 
             overflow-x: hidden;
             font-family: 'Montserrat', sans-serif;
+            -webkit-overflow-scrolling: touch;
         }
 
         .bg-rock {
-            /* Esto es lo que la mantiene clavada en la pantalla */
+            /* Mantenemos la posición fija pero eliminamos el attachment */
             position: fixed; 
             top: 0; 
             left: 0;
-            width: 100%; 
-            height: 100%;
-            
-            /* Importante para que no se mueva al hacer scroll */
-            background-attachment: fixed; 
+            /* Usamos vw y vh para asegurar que cubra la ventana visual exacta */
+            width: 100vw; 
+            height: 100vh;
             
             background-image: url('bg_resources_rock.webp');
             background-size: cover;
             background-position: center;
+            
+            /* CAMBIO CLAVE: Cambiamos 'fixed' por 'scroll' o simplemente lo quitamos.
+               Como el DIV ya es 'position: fixed', la imagen se quedará quieta. */
+            background-attachment: scroll; 
+            
             filter: var(--rock-filter);
-            z-index: -1; /* Se queda al fondo de todo */
+            z-index: -1;
             animation: fadeInRock 2s ease-in-out forwards;
             opacity: 0;
+        
+            /* EL TRUCO PARA MÓVILES: Fuerza a la tarjeta gráfica a renderizar la roca
+               por separado, evitando que salte al hacer scroll. */
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: transform;
         }
 
         @keyframes fadeInRock {
