@@ -9,11 +9,11 @@
     <style>
         :root {
             --brand-color: #9E4632;
-            --brand-color-rgba: rgba(158, 70, 50, 0.15);
             --bg-color: #050505;
             --text-main: #ffffff;
             --text-secondary: #888888;
-            --blur-bg: rgba(255, 255, 255, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         @media (prefers-color-scheme: light) {
@@ -21,7 +21,8 @@
                 --bg-color: #ffffff;
                 --text-main: #000000;
                 --text-secondary: #666666;
-                --blur-bg: rgba(0, 0, 0, 0.05);
+                --glass-bg: rgba(0, 0, 0, 0.03);
+                --glass-border: rgba(0, 0, 0, 0.1);
             }
         }
 
@@ -36,67 +37,74 @@
             height: 100vh; 
             margin: 0; 
             overflow: hidden;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.4s ease;
         }
 
-        /* Contenedor de botones con diseño Blur */
-        .lang-switch {
+        /* Selector tipo Píldora Glassmorphism */
+        .lang-container {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 40px;
+            right: 40px;
             display: flex;
-            gap: 10px;
-            z-index: 10;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 4px;
+            border-radius: 100px;
+            position: relative;
+            width: 100px;
+            height: 35px;
+            user-select: none;
         }
 
-        .lang-btn {
-            background: var(--blur-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--brand-color-rgba);
-            color: var(--text-main);
-            padding: 8px 16px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn:hover {
-            border-color: var(--brand-color);
-            background: var(--brand-color-rgba);
-            transform: translateY(-2px);
-        }
-
-        .lang-btn.active {
+        .lang-toggle {
+            position: absolute;
+            width: 46px;
+            height: 27px;
             background: var(--brand-color);
-            color: white;
-            border-color: var(--brand-color);
+            border-radius: 100px;
+            top: 4px;
+            left: 4px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .lang-option {
+            flex: 1;
+            text-align: center;
+            line-height: 27px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 2;
+            color: var(--text-main);
+            transition: color 0.3s;
+            margin-top: 4px;
+        }
+
+        /* Lógica visual del deslizador */
+        .lang-container[data-lang="es"] .lang-toggle {
+            transform: translateX(46px);
         }
 
         .content { 
             text-align: center; 
-            padding: 20px; 
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Logo 3 veces más grande */
         .logo { 
             width: 360px; 
             max-width: 85%;
             height: auto; 
             margin-bottom: 60px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
         }
 
         h1 { 
             font-family: 'Lexend', sans-serif;
-            font-size: clamp(1.5rem, 5vw, 2.5rem); 
+            font-size: clamp(1.8rem, 6vw, 2.8rem); 
             letter-spacing: 12px; 
             color: var(--brand-color); 
             margin: 0; 
@@ -104,16 +112,14 @@
         }
 
         p { 
-            font-family: 'Montserrat', sans-serif;
             color: var(--text-secondary); 
-            font-size: clamp(0.7rem, 3vw, 0.9rem); 
+            font-size: clamp(0.7rem, 3vw, 0.85rem); 
             margin-top: 25px; 
             letter-spacing: 6px; 
             font-weight: 300;
             text-transform: uppercase;
         }
 
-        /* Animación suave */
         .blink { animation: pulse 4s infinite ease-in-out; }
         @keyframes pulse { 
             0%, 100% { opacity: 0.4; transform: scale(0.98); } 
@@ -123,9 +129,10 @@
 </head>
 <body>
 
-    <div class="lang-switch">
-        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
-        <button id="id-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
+    <div class="lang-container" id="langContainer" data-lang="en">
+        <div class="lang-toggle"></div>
+        <div class="lang-option" onclick="setLanguage('en')">EN</div>
+        <div class="lang-option" onclick="setLanguage('es')">ES</div>
     </div>
 
     <div class="content">
@@ -138,20 +145,17 @@
         function setLanguage(lang) {
             const title = document.getElementById('title');
             const subtitle = document.getElementById('subtitle');
-            const btnEn = document.getElementById('btn-en');
-            const btnEs = document.getElementById('id-es');
+            const container = document.getElementById('langContainer');
+
+            container.setAttribute('data-lang', lang);
 
             if (lang === 'es') {
                 title.textContent = 'Próximamente';
                 subtitle.textContent = 'Algo nuevo se está compilando';
-                btnEs.classList.add('active');
-                btnEn.classList.remove('active');
                 document.documentElement.lang = 'es';
             } else {
                 title.textContent = 'Coming Soon';
                 subtitle.textContent = 'Something new is being compiled';
-                btnEn.classList.add('active');
-                btnEs.classList.remove('active');
                 document.documentElement.lang = 'en';
             }
         }
