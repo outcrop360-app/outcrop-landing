@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Variables de color */
             --brand-color: #9E4632;
+            --brand-color-rgba: rgba(158, 70, 50, 0.15);
             --bg-color: #050505;
             --text-main: #ffffff;
-            --text-secondary: #444444;
+            --text-secondary: #888888;
+            --blur-bg: rgba(255, 255, 255, 0.05);
         }
 
-        /* Detección de Modo Claro */
         @media (prefers-color-scheme: light) {
             :root {
                 --bg-color: #ffffff;
                 --text-main: #000000;
-                --text-secondary: #888888;
+                --text-secondary: #666666;
+                --blur-bg: rgba(0, 0, 0, 0.05);
             }
         }
 
@@ -34,47 +35,69 @@
             align-items: center; 
             height: 100vh; 
             margin: 0; 
+            overflow: hidden;
             transition: background-color 0.3s ease;
         }
 
-        /* Selector de Idioma */
+        /* Contenedor de botones con diseño Blur */
         .lang-switch {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
         }
 
         .lang-btn {
-            background: none;
-            border: 1px solid var(--brand-color);
-            color: var(--brand-color);
-            padding: 5px 10px;
+            background: var(--blur-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--brand-color-rgba);
+            color: var(--text-main);
+            padding: 8px 16px;
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            margin-left: 5px;
-            border-radius: 4px;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
 
         .lang-btn:hover {
-            background-color: var(--brand-color);
-            color: white;
+            border-color: var(--brand-color);
+            background: var(--brand-color-rgba);
+            transform: translateY(-2px);
         }
 
-        .content { text-align: center; padding: 20px; }
+        .lang-btn.active {
+            background: var(--brand-color);
+            color: white;
+            border-color: var(--brand-color);
+        }
 
-        /* Logo 3 veces más grande (aprox 300px-360px) */
+        .content { 
+            text-align: center; 
+            padding: 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Logo 3 veces más grande */
         .logo { 
-            width: 350px; 
-            max-width: 80%;
+            width: 360px; 
+            max-width: 85%;
             height: auto; 
-            margin-bottom: 50px; 
+            margin-bottom: 60px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
         }
 
         h1 { 
             font-family: 'Lexend', sans-serif;
-            font-size: 2.5rem; 
-            letter-spacing: 10px; 
+            font-size: clamp(1.5rem, 5vw, 2.5rem); 
+            letter-spacing: 12px; 
             color: var(--brand-color); 
             margin: 0; 
             text-transform: uppercase; 
@@ -83,49 +106,52 @@
         p { 
             font-family: 'Montserrat', sans-serif;
             color: var(--text-secondary); 
-            font-size: 1rem; 
-            margin-top: 20px; 
-            letter-spacing: 5px; 
+            font-size: clamp(0.7rem, 3vw, 0.9rem); 
+            margin-top: 25px; 
+            letter-spacing: 6px; 
             font-weight: 300;
+            text-transform: uppercase;
         }
 
-        /* Animación */
-        .blink { animation: pulse 3s infinite ease-in-out; }
+        /* Animación suave */
+        .blink { animation: pulse 4s infinite ease-in-out; }
         @keyframes pulse { 
-            0%, 100% { opacity: 0.4; } 
-            50% { opacity: 1; } 
+            0%, 100% { opacity: 0.4; transform: scale(0.98); } 
+            50% { opacity: 1; transform: scale(1); } 
         }
-
-        /* Ocultar inicialmente el idioma que no es por defecto */
-        [lang="es"] { display: none; }
     </style>
 </head>
 <body>
 
     <div class="lang-switch">
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <button id="id-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
     </div>
 
     <div class="content">
         <img src="outcrop.png" alt="Logo" class="logo">
-        
         <h1 id="title" class="blink">Coming Soon</h1>
-        <p id="subtitle">SOMETHING NEW IS BEING COMPILED</p>
+        <p id="subtitle">Something new is being compiled</p>
     </div>
 
     <script>
         function setLanguage(lang) {
             const title = document.getElementById('title');
             const subtitle = document.getElementById('subtitle');
+            const btnEn = document.getElementById('btn-en');
+            const btnEs = document.getElementById('id-es');
 
             if (lang === 'es') {
-                title.innerText = 'Próximamente';
-                subtitle.innerText = 'ALGO NUEVO SE ESTÁ COMPILANDO';
+                title.textContent = 'Próximamente';
+                subtitle.textContent = 'Algo nuevo se está compilando';
+                btnEs.classList.add('active');
+                btnEn.classList.remove('active');
                 document.documentElement.lang = 'es';
             } else {
-                title.innerText = 'Coming Soon';
-                subtitle.innerText = 'SOMETHING NEW IS BEING COMPILED';
+                title.textContent = 'Coming Soon';
+                subtitle.textContent = 'Something new is being compiled';
+                btnEn.classList.add('active');
+                btnEs.classList.remove('active');
                 document.documentElement.lang = 'en';
             }
         }
