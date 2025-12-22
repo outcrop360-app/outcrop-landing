@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Coming Soon | outcrop360</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
@@ -11,57 +11,57 @@
             --brand-color: #9E4632;
             --bg-color: #050505;
             --text-main: #ffffff;
-            --text-secondary: #888888;
+            --text-secondary: #aaaaaa;
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.15);
-            /* Textura de roca oscura */
-            --bg-texture: url('https://www.transparenttextures.com/patterns/rocky-wall.png');
-            --glow: 0 0 15px rgba(158, 70, 50, 0.6);
+            --glow: 0 0 20px rgba(158, 70, 50, 0.7);
         }
 
         @media (prefers-color-scheme: light) {
             :root {
                 --bg-color: #f2f2f2;
                 --text-main: #000000;
-                --text-secondary: #555555;
+                --text-secondary: #444444;
                 --glass-bg: rgba(0, 0, 0, 0.03);
                 --glass-border: rgba(0, 0, 0, 0.1);
-                /* Textura de roca clara */
-                --bg-texture: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
             }
         }
 
         body { 
             background-color: var(--bg-color); 
-            background-image: var(--bg-texture);
+            /* Usando tu textura de roca real */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('bg_resources_rock.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-main); 
             font-family: 'Montserrat', sans-serif; 
             display: flex; 
             flex-direction: column;
-            justify-content: center; /* Centrado vertical */
-            align-items: center; /* Centrado horizontal */
+            justify-content: center; 
+            align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            overflow: hidden;
+            padding: 0;
+            overflow: hidden; /* Evita scrolls innecesarios en móvil */
             transition: all 0.5s ease;
         }
 
-        /* Selector Píldora en esquina superior derecha */
+        /* Selector de Idioma */
         .lang-wrapper {
             position: absolute;
-            top: 30px; 
-            right: 30px; 
+            top: 25px; 
+            right: 25px; 
             display: flex;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 100px;
-            width: 120px; 
-            height: 38px; 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            width: 110px; 
+            height: 36px; 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
             z-index: 100;
-            overflow: hidden;
         }
 
         .lang-option {
@@ -70,12 +70,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             cursor: pointer;
             color: var(--text-main);
             z-index: 2;
-            transition: color 0.3s ease;
         }
 
         .slider {
@@ -95,58 +94,60 @@
             transform: translateX(100%);
         }
 
-        /* Contenedor central corregido para centrado absoluto */
         .content { 
             text-align: center; 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
+            width: 90%; /* Margen lateral en móvil */
+            max-width: 600px;
         }
 
         .logo { 
-            width: 380px; 
-            max-width: 80vw;
+            width: 320px; 
+            max-width: 70vw;
             height: auto; 
-            margin-bottom: 40px;
-            /* Sutil sombra al logo para que no se pierda en la textura */
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            margin-bottom: 30px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
         }
 
         h1 { 
             font-family: 'Lexend', sans-serif;
-            font-size: clamp(1.8rem, 8vw, 3rem); 
-            letter-spacing: 14px; 
+            /* clamp ajustado para que "PRÓXIMAMENTE" no se corte en pantallas pequeñas */
+            font-size: clamp(1.2rem, 7.5vw, 2.8rem); 
+            letter-spacing: clamp(5px, 3vw, 12px); 
             color: var(--brand-color); 
             margin: 0; 
             text-transform: uppercase; 
-            /* Sombra/Resplandor igual a la pildora */
             text-shadow: var(--glow);
+            white-space: nowrap; /* Mantiene la palabra en una sola línea */
         }
 
         p { 
             font-family: 'Montserrat', sans-serif;
             color: var(--text-secondary); 
-            font-size: clamp(0.7rem, 4vw, 0.9rem); 
-            margin-top: 20px; 
-            letter-spacing: 7px; 
-            font-weight: 300;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem); 
+            margin-top: 15px; 
+            letter-spacing: 4px; 
+            font-weight: 400;
             text-transform: uppercase;
         }
 
         .blink { animation: pulse 4s infinite ease-in-out; }
         @keyframes pulse { 
-            0%, 100% { opacity: 0.5; filter: blur(1px); } 
-            50% { opacity: 1; filter: blur(0px); } 
+            0%, 100% { opacity: 0.6; } 
+            50% { opacity: 1; } 
         }
 
-        /* Ajuste para que en móviles muy pequeños no se amontone todo */
-        @media (max-height: 600px) {
-            .logo { width: 200px; margin-bottom: 20px; }
-            .lang-wrapper { top: 15px; right: 15px; }
+        /* Solución para el zoom y centrado en móviles */
+        @media (max-width: 480px) {
+            body { 
+                background-attachment: scroll; /* Mejora rendimiento en móvil */
+            }
+            .content {
+                margin-top: -20px; /* Compensa visualmente la píldora superior */
+            }
         }
     </style>
 </head>
