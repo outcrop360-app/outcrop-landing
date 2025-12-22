@@ -15,6 +15,8 @@
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.15);
             --glow: 0 0 20px rgba(158, 70, 50, 0.7);
+            /* Filtro para modo oscuro (mantiene la imagen original) */
+            --rock-filter: brightness(0.4) contrast(1.2);
         }
 
         @media (prefers-color-scheme: light) {
@@ -24,30 +26,39 @@
                 --text-secondary: #444444;
                 --glass-bg: rgba(0, 0, 0, 0.03);
                 --glass-border: rgba(0, 0, 0, 0.1);
+                /* Filtro para modo claro (invierte y aclara la roca oscura) */
+                --rock-filter: invert(0.9) brightness(1.1) contrast(0.8);
             }
         }
 
         body { 
             background-color: var(--bg-color); 
-            /* Usando tu textura de roca real */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('bg_resources_rock.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--text-main); 
-            font-family: 'Montserrat', sans-serif; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
             margin: 0; 
             padding: 0;
-            overflow: hidden; /* Evita scrolls innecesarios en móvil */
-            transition: all 0.5s ease;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.5s ease;
         }
 
-        /* Selector de Idioma */
+        /* Capa de fondo con la imagen y el filtro dinámico */
+        .bg-rock {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('bg_resources_rock.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: var(--rock-filter);
+            z-index: -1;
+            transition: filter 0.5s ease;
+        }
+
         .lang-wrapper {
             position: absolute;
             top: 25px; 
@@ -60,7 +71,7 @@
             border-radius: 100px;
             width: 110px; 
             height: 36px; 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             z-index: 100;
         }
 
@@ -99,8 +110,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            width: 90%; /* Margen lateral en móvil */
+            width: 90%;
             max-width: 600px;
         }
 
@@ -109,27 +119,25 @@
             max-width: 70vw;
             height: auto; 
             margin-bottom: 30px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
 
         h1 { 
             font-family: 'Lexend', sans-serif;
-            /* clamp ajustado para que "PRÓXIMAMENTE" no se corte en pantallas pequeñas */
-            font-size: clamp(1.2rem, 7.5vw, 2.8rem); 
-            letter-spacing: clamp(5px, 3vw, 12px); 
+            font-size: clamp(1.4rem, 8vw, 2.8rem); 
+            letter-spacing: clamp(4px, 2.5vw, 12px); 
             color: var(--brand-color); 
             margin: 0; 
             text-transform: uppercase; 
             text-shadow: var(--glow);
-            white-space: nowrap; /* Mantiene la palabra en una sola línea */
+            white-space: nowrap;
         }
 
         p { 
-            font-family: 'Montserrat', sans-serif;
             color: var(--text-secondary); 
-            font-size: clamp(0.6rem, 2.5vw, 0.8rem); 
+            font-size: clamp(0.65rem, 3vw, 0.85rem); 
             margin-top: 15px; 
-            letter-spacing: 4px; 
+            letter-spacing: clamp(2px, 2vw, 5px);
             font-weight: 400;
             text-transform: uppercase;
         }
@@ -139,19 +147,11 @@
             0%, 100% { opacity: 0.6; } 
             50% { opacity: 1; } 
         }
-
-        /* Solución para el zoom y centrado en móviles */
-        @media (max-width: 480px) {
-            body { 
-                background-attachment: scroll; /* Mejora rendimiento en móvil */
-            }
-            .content {
-                margin-top: -20px; /* Compensa visualmente la píldora superior */
-            }
-        }
     </style>
 </head>
 <body>
+
+    <div class="bg-rock"></div>
 
     <div class="lang-wrapper" id="langWrapper" data-lang="en">
         <div class="slider"></div>
@@ -160,7 +160,7 @@
     </div>
 
     <div class="content">
-        <img src="outcrop.png" alt="Logo outcrop360" class="logo">
+        <img src="outcrop.png" alt="Logo" class="logo">
         <h1 id="title" class="blink">Coming Soon</h1>
         <p id="subtitle">Something new is being compiled</p>
     </div>
@@ -170,7 +170,6 @@
             const title = document.getElementById('title');
             const subtitle = document.getElementById('subtitle');
             const wrapper = document.getElementById('langWrapper');
-
             wrapper.setAttribute('data-lang', lang);
 
             if (lang === 'es') {
