@@ -14,37 +14,43 @@
             --text-secondary: #888888;
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.15);
+            /* Textura de roca oscura */
+            --bg-texture: url('https://www.transparenttextures.com/patterns/rocky-wall.png');
+            --glow: 0 0 15px rgba(158, 70, 50, 0.6);
         }
 
         @media (prefers-color-scheme: light) {
             :root {
-                --bg-color: #f8f8f8;
+                --bg-color: #f2f2f2;
                 --text-main: #000000;
                 --text-secondary: #555555;
                 --glass-bg: rgba(0, 0, 0, 0.03);
                 --glass-border: rgba(0, 0, 0, 0.1);
+                /* Textura de roca clara */
+                --bg-texture: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
             }
         }
 
         body { 
             background-color: var(--bg-color); 
+            background-image: var(--bg-texture);
             color: var(--text-main); 
             font-family: 'Montserrat', sans-serif; 
             display: flex; 
             flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
+            justify-content: center; /* Centrado vertical */
+            align-items: center; /* Centrado horizontal */
+            min-height: 100vh; 
             margin: 0; 
             overflow: hidden;
             transition: all 0.5s ease;
         }
 
-        /* Selector Píldora Glassmorphism Corregido */
+        /* Selector Píldora en esquina superior derecha */
         .lang-wrapper {
             position: absolute;
             top: 30px; 
-            right: 30px; /* Ubicado en la esquina superior derecha */
+            right: 30px; 
             display: flex;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -52,10 +58,10 @@
             border: 1px solid var(--glass-border);
             border-radius: 100px;
             width: 120px; 
-            height: 38px; /* Altura fija para control total */
+            height: 38px; 
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             z-index: 100;
-            overflow: hidden; /* Para que el slider no se salga de las curvas */
+            overflow: hidden;
         }
 
         .lang-option {
@@ -70,56 +76,61 @@
             color: var(--text-main);
             z-index: 2;
             transition: color 0.3s ease;
-            height: 100%; /* Ocupa toda la altura */
         }
 
-        /* El deslizador ajustado al 100% de la altura */
         .slider {
             position: absolute;
             top: 0;
             left: 0;
-            width: 50%; /* Exactamente la mitad */
+            width: 50%; 
             height: 100%;
             background: var(--brand-color);
             border-radius: 100px;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
-            box-shadow: 0 0 15px rgba(158, 70, 50, 0.4);
+            box-shadow: var(--glow);
         }
 
-        /* Movimiento exacto del slider */
         .lang-wrapper[data-lang="es"] .slider {
             transform: translateX(100%);
         }
 
+        /* Contenedor central corregido para centrado absoluto */
         .content { 
             text-align: center; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .logo { 
             width: 380px; 
-            max-width: 85vw;
+            max-width: 80vw;
             height: auto; 
             margin-bottom: 40px;
+            /* Sutil sombra al logo para que no se pierda en la textura */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
 
         h1 { 
             font-family: 'Lexend', sans-serif;
-            font-size: clamp(1.8rem, 6vw, 3rem); 
+            font-size: clamp(1.8rem, 8vw, 3rem); 
             letter-spacing: 14px; 
             color: var(--brand-color); 
             margin: 0; 
             text-transform: uppercase; 
+            /* Sombra/Resplandor igual a la pildora */
+            text-shadow: var(--glow);
         }
 
         p { 
             font-family: 'Montserrat', sans-serif;
             color: var(--text-secondary); 
-            font-size: clamp(0.75rem, 3vw, 0.9rem); 
+            font-size: clamp(0.7rem, 4vw, 0.9rem); 
             margin-top: 20px; 
             letter-spacing: 7px; 
             font-weight: 300;
@@ -128,8 +139,14 @@
 
         .blink { animation: pulse 4s infinite ease-in-out; }
         @keyframes pulse { 
-            0%, 100% { opacity: 0.4; } 
-            50% { opacity: 1; } 
+            0%, 100% { opacity: 0.5; filter: blur(1px); } 
+            50% { opacity: 1; filter: blur(0px); } 
+        }
+
+        /* Ajuste para que en móviles muy pequeños no se amontone todo */
+        @media (max-height: 600px) {
+            .logo { width: 200px; margin-bottom: 20px; }
+            .lang-wrapper { top: 15px; right: 15px; }
         }
     </style>
 </head>
@@ -142,7 +159,7 @@
     </div>
 
     <div class="content">
-        <img src="outcrop.png" alt="Logo" class="logo">
+        <img src="outcrop.png" alt="Logo outcrop360" class="logo">
         <h1 id="title" class="blink">Coming Soon</h1>
         <p id="subtitle">Something new is being compiled</p>
     </div>
