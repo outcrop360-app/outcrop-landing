@@ -6,9 +6,7 @@
     <title>Coming Soon | outcrop360</title>
 
     <link rel="icon" type="image/png" href="favicon.png">
-    
     <link rel="preload" as="image" href="bg_resources_rock.webp">
-    
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
@@ -38,7 +36,6 @@
             background-color: var(--bg-color); 
             margin: 0; padding: 0;
             min-height: 100vh;
-            /* Usamos esto para que el scroll sea fluido pero el fondo no se mueva */
             display: flex; 
             justify-content: center; 
             align-items: center;
@@ -49,36 +46,42 @@
         }
 
         .bg-rock {
-            /* Mantenemos la posición fija pero eliminamos el attachment */
             position: fixed; 
-            top: 0; 
-            left: 0;
-            /* Usamos vw y vh para asegurar que cubra la ventana visual exacta */
-            width: 100vw; 
-            height: 100vh;
-            
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background-image: url('bg_resources_rock.webp');
             background-size: cover;
             background-position: center;
-            
-            /* CAMBIO CLAVE: Cambiamos 'fixed' por 'scroll' o simplemente lo quitamos.
-               Como el DIV ya es 'position: fixed', la imagen se quedará quieta. */
             background-attachment: scroll; 
-            
             filter: var(--rock-filter);
             z-index: -1;
             animation: fadeInRock 2s ease-in-out forwards;
             opacity: 0;
-        
-            /* EL TRUCO PARA MÓVILES: Fuerza a la tarjeta gráfica a renderizar la roca
-               por separado, evitando que salte al hacer scroll. */
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
             will-change: transform;
         }
 
-        @keyframes fadeInRock {
-            to { opacity: 1; }
+        @keyframes fadeInRock { to { opacity: 1; } }
+
+        /* --- ANIMACIONES DEL LOGO --- */
+        @keyframes levitatePiece {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .levitate-1 { animation: levitatePiece 4s ease-in-out infinite; }
+        .levitate-2 { animation: levitatePiece 3.2s ease-in-out infinite; animation-delay: 0.5s; }
+        .levitate-3 { animation: levitatePiece 4.5s ease-in-out infinite; animation-delay: 1.2s; }
+        .levitate-4 { animation: levitatePiece 3.8s ease-in-out infinite; animation-delay: 0.8s; }
+        /* El marco (path4) se queda quieto para dar estabilidad */
+
+        .logo-svg {
+            width: 320px; 
+            max-width: 70vw; 
+            height: auto; 
+            margin-bottom: 30px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
 
         .lang-wrapper {
@@ -121,14 +124,7 @@
             align-items: center; 
             width: 90%; 
             max-width: 800px;
-            /* Añadimos padding para que en horizontal respire */
             padding: 40px 0; 
-        }
-
-        .logo { 
-            width: 320px; max-width: 70vw; height: auto; 
-            margin-bottom: 30px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
 
         h1 { 
@@ -141,16 +137,16 @@
             line-height: 1.3;
         }
 
-        /* Estilo para el pequeño aviso de Coming Soon / Próximamente */
         .status-tag {
-            font-size: 0.6em;         /* Tamaño aumentado para que sea legible */
+            font-size: 0.6em; 
             display: block; 
-            opacity: 1;              /* Opacidad total para que resalte */
-            color: var(--text-main);  /* Cambiado a blanco (o negro en modo claro) */
-            letter-spacing: 10px;    /* Un poco más de espacio entre letras para estilo "premium" */
+            opacity: 1; 
+            color: var(--text-main); 
+            letter-spacing: 10px; 
             margin-bottom: 12px;
-            font-weight: 700;        /* Negrita para diferenciarlo del cuerpo */
+            font-weight: 700;
         }
+
         p { 
             color: var(--text-secondary); 
             font-size: clamp(0.65rem, 3vw, 0.85rem); 
@@ -176,7 +172,17 @@
     </div>
 
     <div class="content">
-        <img src="outcrop.png" alt="Logo" class="logo">
+        <svg class="logo-svg" viewBox="0 0 409.6 409.6" xmlns="http://www.w3.org/2000/svg">
+            <g style="fill:var(--brand-color); fill-opacity:1">
+                <path id="path7" class="levitate-1" d="m 208.869,154.16085 c 4.48118,-0.69784 10.8676,-3.41761 25.22899,-10.74421 10.57595,-5.39541 19.23845,-10.09191 19.25,-10.43667 0.0116,-0.34476 -10.13504,-5.14314 -22.548,-10.66308 l -22.569,-10.03624 -26.931,7.6206 c -14.81205,4.19133 -26.93099,7.89783 -26.93099,8.23667 0,0.73901 46.06513,26.83213 47.5,26.90589 0.55,0.0283 3.7,-0.36906 7,-0.88296 z" />
+                <path id="path6" class="levitate-2" d="m 251.119,180.18323 c 10.03751,-6.17902 18.25,-11.65718 18.25,-12.17368 0,-1.55845 -9.96123,-20.90339 -10.75912,-20.89443 -0.40748,0.005 -8.738,4.24785 -18.51229,9.42951 -19.01804,10.08208 -21.42043,11.0699 -29.353,12.06954 l -5.12442,0.64576 -9.12558,17.53839 c -5.01907,9.64612 -9.12559,17.88106 -9.12559,18.29988 0,0.41882 10.2375,-2.48793 22.75,-6.45944 l 22.75,-7.22093 z" />
+                <path id="path5" class="levitate-3" d="m 236.43868,241.25171 c 9.16242,-2.70015 10.93924,-3.74711 41.75,-24.6005 17.69919,-11.97918 32.18032,-22.13185 32.18032,-22.5615 0,-0.72199 -23.43531,-14.10253 -27.13981,-15.49566 -1.07086,-0.4027 -9.56316,4.27262 -24.47562,13.47472 -19.95778,12.31544 -24.09915,14.47081 -32.86018,17.10194 -5.51341,1.65581 -17.14514,5.27013 -25.84828,8.03183 -17.86437,5.66875 -17.5591,5.19924 -7.7164,11.86866 7.77942,5.27132 13.11013,7.84602 24.04029,11.61128 5.225,1.79993 9.725,3.29888 10,3.331 0.275,0.0321 4.80636,-1.21067 10.06968,-2.76177 z" />
+                <path id="path4" d="m 347.50366,234.1068 c 1.09983,-5.225 2.25858,-15.61972 2.57496,-23.09938 C 352.41994,155.65677 325.44971,105.15107 278.7991,77.5261 234.08189,51.04603 176.41338,50.79947 131.7277,76.89732 c -16.99087,9.92319 -36.318569,27.7348 -47.115869,43.42001 -10.55404,15.33183 -19.23382,36.02631 -22.9481,54.71327 -2.69139,13.54066 -2.16117,56.55876 0.65867,53.44002 0.42957,-0.4751 4.90266,-10.53882 9.9402,-22.36382 13.18245,-30.94413 12.60985,-29.96907 19.67264,-33.5 3.30043,-1.65 7.9939,-3.9 10.429929,-5 4.26242,-1.92471 4.88754,-2.82651 16.60628,-23.95625 6.79768,-12.25672 13.38916,-22.92269 14.92073,-24.14393 3.02736,-2.41393 4.85751,-2.98409 44.47683,-13.85618 15.125,-4.15052 28.70114,-7.54577 30.16919,-7.54501 2.77496,0.001 47.38417,19.01123 51.90747,22.11988 1.74085,1.19641 5.62832,8.12161 11.98437,21.34914 l 9.40771,19.57832 19.32277,10.65289 c 11.20806,6.17915 20.08467,11.73391 21.137,13.22702 0.99783,1.41576 4.63061,12.02412 8.07286,23.57412 5.21716,17.50548 8.8803,28.67451 12.62697,38.5 0.81773,2.14446 2.09269,-1.53359 4.50631,-13 z" />
+                <path id="path3" class="levitate-4" d="m 246.869,279.08852 c 11.55,-7.49074 33.15,-21.20578 48,-30.47785 14.85001,-9.27208 27.15915,-16.97522 27.35368,-17.1181 0.31952,-0.2347 -6.75707,-22.44305 -7.39486,-23.20716 -0.14754,-0.17676 -6.94863,4.28893 -15.11354,9.92376 -50.85354,35.09548 -46.0638,32.17451 -58.27897,35.54082 -4.63853,1.2783 -8.73789,2.66903 -9.10968,3.0905 -0.62643,0.71013 -11.95663,37.57261 -11.95663,38.90055 0,0.32768 1.2375,-0.22069 2.75,-1.2186 1.5125,-0.99791 12.2,-7.94317 23.75,-15.43392 z" />
+                <path id="path2" class="levitate-2" d="m 254.44031,297.6062 c 13.46542,-4.31424 17.90027,-4.30672 39.42575,0.0668 l 18.7857,3.81689 2.41586,-2.94157 c 3.82389,-4.65601 16.96667,-24.57497 18.839,-28.55206 l 1.69975,-3.61049 -4.27426,-9.88951 c -2.35085,-5.43923 -4.60361,-10.26637 -5.00613,-10.72697 -0.71673,-0.8201 -46.16488,26.93404 -62.95698,38.44636 -8.65004,5.93029 -21.78744,17.42714 -18.92869,16.56492 0.86422,-0.26065 5.36422,-1.68914 10,-3.17442 z" />
+            </g>
+        </svg>
+
         <h1 id="title" class="blink">
             <span class="status-tag">COMING SOON</span>
             A new tool is about to surface
