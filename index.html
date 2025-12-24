@@ -210,6 +210,9 @@
             const subtitle = document.getElementById('subtitle');
             const wrapper = document.getElementById('langWrapper');
             wrapper.setAttribute('data-lang', lang);
+            
+            // Guardar preferencia
+            localStorage.setItem('preferredLang', lang);
         
             if (lang === 'es') {
                 title.innerHTML = '<span class="status-tag">PRÓXIMAMENTE</span>Una nueva herramienta está por salir a la superficie';
@@ -221,17 +224,15 @@
                 document.documentElement.lang = 'en';
             }
         }
-
-        // NUEVO: Detección automática al cargar
-    window.onload = function() {
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang.startsWith('es')) {
-            setLanguage('es');
-        } else {
-            setLanguage('en'); // Si el navegador está en inglés u otro idioma, abre en inglés
-        }
-    };
         
+        window.onload = function() {
+            // 1. Prioridad: Lo que el usuario eligió antes
+            // 2. Segunda opción: El idioma del navegador
+            const savedLang = localStorage.getItem('preferredLang');
+            const browserLang = (navigator.language || navigator.userLanguage).startsWith('es') ? 'es' : 'en';
+            
+            setLanguage(savedLang || browserLang);
+        };        
     </script>
 </body>
 </html>
