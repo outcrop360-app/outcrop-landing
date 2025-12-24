@@ -221,6 +221,17 @@
                 document.documentElement.lang = 'en';
             }
         }
+
+        // NUEVO: Detección automática al cargar
+    window.onload = function() {
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('es')) {
+            setLanguage('es');
+        } else {
+            setLanguage('en'); // Si el navegador está en inglés u otro idioma, abre en inglés
+        }
+    };
+        
     </script>
 </body>
 </html>
