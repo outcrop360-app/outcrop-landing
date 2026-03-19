@@ -1,3 +1,5 @@
+/* css/styles.css */
+
 :root {
     --brand-color: #9E4632;
     --bg-color: #050505;
@@ -69,6 +71,7 @@ nav {
     text-decoration: none;
 }
 
+/* Ajuste del icono del nav solicitado */
 .nav-logo-img {
     height: 48px;
     width: auto;
@@ -111,32 +114,13 @@ nav {
 .lang-switch span { opacity: 0.5; transition: opacity 0.3s; }
 .lang-switch span.active { opacity: 1; color: var(--brand-color); }
 
-/* --- ANIMACIONES DEL LOGO HERO --- */
-@keyframes levitatePiece {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-.levitate-1 { animation: levitatePiece 4s ease-in-out infinite; }
-.levitate-2 { animation: levitatePiece 3.2s ease-in-out infinite; animation-delay: 0.5s; }
-.levitate-3 { animation: levitatePiece 4.5s ease-in-out infinite; animation-delay: 1.2s; }
-.levitate-4 { animation: levitatePiece 3.8s ease-in-out infinite; animation-delay: 0.8s; }
-
-.hero-logo-svg {
-    width: 180px; /* Tamaño adaptado para que comparta el protagonismo con el teléfono */
-    max-width: 100%;
-    height: auto; 
-    margin-bottom: 25px;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-}
-
 /* --- HERO SECTION --- */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 5% 0;
+    padding: 100px 5% 50px; /* Más espacio arriba */
     box-sizing: border-box;
     max-width: 1200px;
     margin: 0 auto;
@@ -145,22 +129,56 @@ nav {
 .hero-content {
     flex: 1;
     padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinear contenido a la izquierda */
 }
+
+/* --- NUEVOS ESTILOS DEL LOGO REUTILIZABLE (Inyectado) --- */
+/* Contenedor donde JS inyectará el SVG */
+#animated-logo-container {
+    width: 100px; /* TAMAÑO AJUSTADO Y CONTROLADO */
+    height: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* El SVG real dentro del contenedor */
+.animated-logo-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+/* --- REGLAS DE ANIMACIÓN (Ahora sí en el CSS) --- */
+@keyframes levitatePiece {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Clases que JS ya puso en el SVG */
+.levitate-1 { animation: levitatePiece 4s ease-in-out infinite; }
+.levitate-2 { animation: levitatePiece 3.2s ease-in-out infinite; animation-delay: 0.5s; }
+.levitate-3 { animation: levitatePiece 4.5s ease-in-out infinite; animation-delay: 1.2s; }
+.levitate-4 { animation: levitatePiece 3.8s ease-in-out infinite; animation-delay: 0.8s; }
+
 
 .hero h1 {
     font-family: 'Lexend', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.2rem, 5vw, 3.5rem); /* Un poco más pequeño para mobile */
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
     color: var(--text-main);
 }
 
 .hero h1 span { color: var(--brand-color); }
 
 .hero p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 2vw, 1.1rem);
     color: var(--text-secondary);
-    margin-bottom: 40px;
+    margin: 0 0 40px 0;
     max-width: 500px;
     line-height: 1.6;
 }
@@ -215,7 +233,8 @@ nav {
 
 @media (max-width: 768px) {
     .hero { flex-direction: column; text-align: center; padding-top: 120px; }
-    .hero-content { padding-right: 0; margin-bottom: 50px; }
+    .hero-content { padding-right: 0; margin-bottom: 50px; align-items: center; } /* Centrar en mobile */
+    #animated-logo-container { margin: 0 auto 20px auto; } /* Centrar contenedor logo */
     .nav-links { display: none; }
     .hero p { margin: 0 auto 40px; }
 }
