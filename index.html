@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>outcrop360 | The Geology App</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -16,6 +16,7 @@
             --text-secondary: #aaaaaa;
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
+            --rock-filter: brightness(0.4) contrast(1.1);
         }
 
         @media (prefers-color-scheme: light) {
@@ -26,6 +27,7 @@
                 --text-secondary: #555555;
                 --glass-bg: rgba(0, 0, 0, 0.03);
                 --glass-border: rgba(0, 0, 0, 0.08);
+                --rock-filter: invert(0.9) brightness(1.2) contrast(0.8);
             }
         }
 
@@ -33,10 +35,26 @@
             background-color: var(--bg-color); 
             color: var(--text-main);
             margin: 0; padding: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Lexend', sans-serif;
             overflow-x: hidden;
         }
 
+        /* --- FONDO DE ROCA --- */
+        .bg-rock {
+            position: fixed; 
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('bg_resources_rock.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll; 
+            filter: var(--rock-filter);
+            z-index: -1;
+            animation: fadeInRock 2s ease-in-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInRock { to { opacity: 1; } }
+        
         /* --- NAVEGACIÓN --- */
         nav {
             position: fixed;
@@ -54,14 +72,28 @@
             z-index: 1000;
         }
 
-        .nav-logo {
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            height: 35px; /* Ajusta este valor si tu logo se ve muy grande o pequeño */
+            width: auto;
+        }
+
+        .brand-text {
             font-family: 'Lexend', sans-serif;
             font-size: 1.5rem;
-            color: var(--brand-color);
-            text-decoration: none;
+            font-weight: 700;
             letter-spacing: 1px;
         }
 
+        .brand-outcrop { color: var(--brand-color); }
+        .brand-360 { color: var(--text-main); }
+        
         .nav-links {
             display: flex;
             gap: 30px;
@@ -178,8 +210,15 @@
 </head>
 <body>
 
+    <div class="bg-rock"></div>
+
     <nav>
-        <a href="#" class="nav-logo">outcrop360</a>
+        <a href="#" class="nav-brand">
+            <img src="outcrop.png" alt="Outcrop360 Logo" class="nav-logo-img">
+            <span class="brand-text">
+                <span class="brand-outcrop">Outcrop</span><span class="brand-360">360</span>
+            </span>
+        </a>
         
         <div class="nav-links">
             <a href="#features" id="nav-features">Features</a>
