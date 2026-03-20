@@ -1,3 +1,5 @@
+// js/translations.js
+
 const translations = {
     en: {
         navFeatures: "Features",
@@ -29,7 +31,18 @@ const translations = {
         bento4Desc: "Convert coordinates and over 40 physical units instantly.",
         
         // Audiencia
-        audienceTitle: "Engineered for professionals in:"
+        audienceTitle: "Engineered for professionals in:",
+
+        // Footer
+        footerProduct: "Product",
+        footerPlans: "Compare Plans",
+        footerCompany: "Company",
+        footerAbout: "About Us",
+        footerSupport: "Support",
+        footerHelp: "Help Center",
+        footerContact: "Contact",
+        footerRights: "All rights reserved. Outcrop Co.",
+        footerLanguage: "Language:"
     },
     es: {
         navFeatures: "Características",
@@ -61,6 +74,17 @@ const translations = {
         bento4Desc: "Convierte coordenadas y más de 40 unidades físicas al instante.",
         
         // Audiencia
-        audienceTitle: "Diseñado para profesionales en:"
+        audienceTitle: "Diseñado para profesionales en:",
+
+        // Footer
+        footerProduct: "Producto",
+        footerPlans: "Comparar Planes",
+        footerCompany: "Empresa",
+        footerAbout: "Sobre Nosotros",
+        footerSupport: "Soporte",
+        footerHelp: "Centro de Ayuda",
+        footerContact: "Contacto",
+        footerRights: "Todos los derechos reservados. Outcrop Co.",
+        footerLanguage: "Idioma:"
     }
 };
