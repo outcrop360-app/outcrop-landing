@@ -137,8 +137,8 @@ nav {
 /* --- NUEVOS ESTILOS DEL LOGO REUTILIZABLE (Inyectado) --- */
 /* Contenedor donde JS inyectará el SVG */
 #animated-logo-container {
-    width: 280px; /* TAMAÑO AJUSTADO Y CONTROLADO */
-    height: 280px;
+    width: 380px; /* TAMAÑO AJUSTADO Y CONTROLADO */
+    height: 380px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
