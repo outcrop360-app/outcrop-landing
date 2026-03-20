@@ -23,6 +23,11 @@
     }
 }
 
+html {
+    scroll-padding-top: 130px; /* Compensa el alto del Nav para que no tape los títulos */
+    scroll-behavior: smooth; /* Hace que el deslizamiento al hacer clic sea suave y elegante */
+}
+
 body { 
     background-color: var(--bg-color); 
     color: var(--text-main);
@@ -234,6 +239,47 @@ body.force-light .bg-rock {
     min-width: 0; /* Previene desbordamientos en Flexbox */
     color: var(--text-main);
 }
+
+.legal-content-main h1 {
+    color: var(--text-main);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.legal-content-main .last-updated {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* Aquí está el espacio extra que pediste para los títulos numerados */
+.legal-content-main h2 {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    margin-top: 100px; 
+    margin-bottom: 20px;
+}
+
+.legal-content-main h3 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.legal-content-main p, .legal-content-main ul {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.legal-content-main ul { padding-left: 20px; }
+.legal-content-main li { margin-bottom: 10px; }
+.legal-content-main a { color: var(--brand-color); text-decoration: none; }
+.legal-content-main a:hover { text-decoration: underline; }
 
 /* --- CONTROL DE IDIOMAS (Para páginas estáticas largas) --- */
 html[lang="en"] .lang-es { display: none !important; }
