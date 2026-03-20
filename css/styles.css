@@ -234,3 +234,7 @@ body.force-light .bg-rock {
     min-width: 0; /* Previene desbordamientos en Flexbox */
     color: var(--text-main);
 }
+
+/* --- CONTROL DE IDIOMAS (Para páginas estáticas largas) --- */
+html[lang="en"] .lang-es { display: none !important; }
+html[lang="es"] .lang-en { display: none !important; }
