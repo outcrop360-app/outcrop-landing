@@ -1,5 +1,3 @@
-// js/translations.js
-
 const translations = {
     en: {
         navFeatures: "Features",
@@ -8,8 +6,6 @@ const translations = {
         heroTitle: "Master the <span>field.</span>",
         heroSubtitle: "GIS, 3D maps, data logging, and offline tools. Your ultimate command center for fieldwork.",
         heroCta: "Get early access",
-        
-        // Scroll Interactivo (4 Pilares)
         feat1Title: "Live Tech & Team Management",
         feat1Desc: "Organize cloud projects, view live locations in real-time, and collaborate seamlessly with your field brigades.",
         feat2Title: "Advanced GIS & 3D Maps",
@@ -18,8 +14,6 @@ const translations = {
         feat3Desc: "A complete arsenal: structural compass, strip logs, AR visual angle meter, and a stamped technical camera.",
         feat4Title: "Resource Library & Community",
         feat4Desc: "Access a massive built-in database. Document findings, earn achievements, and level up in the global ranking.",
-        
-        // Bento Box (Herramientas)
         bentoTitle: "Precision tools in your pocket.",
         bento1Title: "Structural Compass",
         bento1Desc: "Instant visualization on Wulff, Schmidt, Contours, and Rosettes.",
@@ -29,11 +23,7 @@ const translations = {
         bento3Desc: "Detailed technical profiles with universal color palettes.",
         bento4Title: "Universal Converter",
         bento4Desc: "Convert coordinates and over 40 physical units instantly.",
-        
-        // Audiencia
         audienceTitle: "Engineered for professionals in:",
-
-        // Footer
         footerProduct: "Product",
         footerPlans: "Compare Plans",
         footerCompany: "Company",
@@ -41,8 +31,10 @@ const translations = {
         footerSupport: "Support",
         footerHelp: "Help Center",
         footerContact: "Contact",
-        footerRights: "All rights reserved. Outcrop Co.",
-        footerLanguage: "Language:"
+        footerTerms: "Terms & Conditions",
+        footerPrivacy: "Privacy Policy",
+        footerFollow: "Follow us",
+        footerRights: "All rights reserved. Outcrop Co."
     },
     es: {
         navFeatures: "Características",
@@ -51,8 +43,6 @@ const translations = {
         heroTitle: "Domina el <span>terreno.</span>",
         heroSubtitle: "SIG, mapas 3D, registro de datos y herramientas offline. Tu centro de comando definitivo para el trabajo de campo.",
         heroCta: "Acceso anticipado",
-        
-        // Scroll Interactivo (4 Pilares)
         feat1Title: "Gestión Técnica y Equipos en Vivo",
         feat1Desc: "Organiza proyectos en la nube, visualiza ubicaciones en tiempo real y colabora sin fricción con tus brigadas.",
         feat2Title: "SIG Avanzado y Mapas 3D",
@@ -61,8 +51,6 @@ const translations = {
         feat3Desc: "Un arsenal completo: brújula estructural, strip logs, medidor de ángulos AR y cámara técnica estampada.",
         feat4Title: "Biblioteca y Comunidad",
         feat4Desc: "Accede a una base de datos integrada. Documenta hallazgos, gana medallas y sube de nivel en el ranking mundial.",
-        
-        // Bento Box (Herramientas)
         bentoTitle: "Herramientas de precisión en tu bolsillo.",
         bento1Title: "Brújula Estructural",
         bento1Desc: "Visualización instantánea en estereogramas (Wulff, Schmidt, Contornos y Rosetas).",
@@ -72,11 +60,7 @@ const translations = {
         bento3Desc: "Perfiles técnicos detallados con paletas de colores universales.",
         bento4Title: "Conversor Universal",
         bento4Desc: "Convierte coordenadas y más de 40 unidades físicas al instante.",
-        
-        // Audiencia
         audienceTitle: "Diseñado para profesionales en:",
-
-        // Footer
         footerProduct: "Producto",
         footerPlans: "Comparar Planes",
         footerCompany: "Empresa",
@@ -84,7 +68,9 @@ const translations = {
         footerSupport: "Soporte",
         footerHelp: "Centro de Ayuda",
         footerContact: "Contacto",
-        footerRights: "Todos los derechos reservados. Outcrop Co.",
-        footerLanguage: "Idioma:"
+        footerTerms: "Términos y Condiciones",
+        footerPrivacy: "Política de Privacidad",
+        footerFollow: "Síguenos",
+        footerRights: "Todos los derechos reservados. Outcrop Co."
     }
 };
