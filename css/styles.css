@@ -198,9 +198,19 @@ body.force-light .bg-rock {
     display: none; /* Chrome, Safari, Edge */
 }
 
+/* Corrección: Resetear el nav global para el sidebar */
 .legal-sidebar nav {
+    position: relative; /* Quita el "fixed" del nav principal */
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    align-items: flex-start; /* Alinea el texto a la izquierda, no al centro */
 }
 
 .legal-sidebar a {
