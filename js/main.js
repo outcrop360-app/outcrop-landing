@@ -1,4 +1,6 @@
-// js/main.js
+// Funciones seguras para evitar que el script se rompa si falta un ID
+const safeSetText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+const safeSetHTML = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
 
 function setLanguage(lang) {
     document.documentElement.lang = lang;
@@ -10,47 +12,50 @@ function setLanguage(lang) {
     const t = translations[lang];
 
     // Nav y Hero
-    document.getElementById('nav-features').textContent = t.navFeatures;
-    document.getElementById('nav-plans').textContent = t.navPlans;
-    document.getElementById('nav-cta').textContent = t.navCta;
-    document.getElementById('hero-title').innerHTML = t.heroTitle;
-    document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
-    document.getElementById('hero-cta').textContent = t.heroCta;
+    safeSetText('nav-features', t.navFeatures);
+    safeSetText('nav-plans', t.navPlans);
+    safeSetText('nav-cta', t.navCta);
+    safeSetHTML('hero-title', t.heroTitle); // Usamos HTML para no romper el span de color
+    safeSetText('hero-subtitle', t.heroSubtitle);
+    safeSetText('hero-cta', t.heroCta);
 
     // Scroll GSAP
-    document.getElementById('feat1-title').textContent = t.feat1Title;
-    document.getElementById('feat1-desc').textContent = t.feat1Desc;
-    document.getElementById('feat2-title').textContent = t.feat2Title;
-    document.getElementById('feat2-desc').textContent = t.feat2Desc;
-    document.getElementById('feat3-title').textContent = t.feat3Title;
-    document.getElementById('feat3-desc').textContent = t.feat3Desc;
-    document.getElementById('feat4-title').textContent = t.feat4Title;
-    document.getElementById('feat4-desc').textContent = t.feat4Desc;
+    safeSetText('feat1-title', t.feat1Title);
+    safeSetText('feat1-desc', t.feat1Desc);
+    safeSetText('feat2-title', t.feat2Title);
+    safeSetText('feat2-desc', t.feat2Desc);
+    safeSetText('feat3-title', t.feat3Title);
+    safeSetText('feat3-desc', t.feat3Desc);
+    safeSetText('feat4-title', t.feat4Title);
+    safeSetText('feat4-desc', t.feat4Desc);
 
     // Bento Box
-    document.getElementById('bento-main-title').textContent = t.bentoTitle;
-    document.getElementById('bento1-title').textContent = t.bento1Title;
-    document.getElementById('bento1-desc').textContent = t.bento1Desc;
-    document.getElementById('bento2-title').textContent = t.bento2Title;
-    document.getElementById('bento2-desc').textContent = t.bento2Desc;
-    document.getElementById('bento3-title').textContent = t.bento3Title;
-    document.getElementById('bento3-desc').textContent = t.bento3Desc;
-    document.getElementById('bento4-title').textContent = t.bento4Title;
-    document.getElementById('bento4-desc').textContent = t.bento4Desc;
+    safeSetText('bento-main-title', t.bentoTitle);
+    safeSetText('bento1-title', t.bento1Title);
+    safeSetText('bento1-desc', t.bento1Desc);
+    safeSetText('bento2-title', t.bento2Title);
+    safeSetText('bento2-desc', t.bento2Desc);
+    safeSetText('bento3-title', t.bento3Title);
+    safeSetText('bento3-desc', t.bento3Desc);
+    safeSetText('bento4-title', t.bento4Title);
+    safeSetText('bento4-desc', t.bento4Desc);
 
     // Audiencia
-    document.getElementById('audience-title').textContent = t.audienceTitle;
+    safeSetText('audience-title', t.audienceTitle);
 
     // Footer
-    document.getElementById('footer-product-title').textContent = t.footerProduct;
-    document.getElementById('footer-company-title').textContent = t.footerCompany;
-    document.getElementById('footer-support-title').textContent = t.footerSupport;
-    document.getElementById('footer-features').textContent = t.navFeatures;
-    document.getElementById('footer-plans').textContent = t.footerPlans;
-    document.getElementById('footer-about').textContent = t.footerAbout;
-    document.getElementById('footer-contact').textContent = t.footerContact;
-    document.getElementById('footer-help').textContent = t.footerHelp;
-    document.getElementById('footer-rights').textContent = t.footerRights;
+    safeSetText('footer-follow', t.footerFollow);
+    safeSetText('footer-product-title', t.footerProduct);
+    safeSetText('footer-company-title', t.footerCompany);
+    safeSetText('footer-support-title', t.footerSupport);
+    safeSetText('footer-features', t.navFeatures);
+    safeSetText('footer-plans', t.footerPlans);
+    safeSetText('footer-about', t.footerAbout);
+    safeSetText('footer-contact', t.footerContact);
+    safeSetText('footer-terms', t.footerTerms);
+    safeSetText('footer-privacy', t.footerPrivacy);
+    safeSetText('footer-help', t.footerHelp);
+    safeSetText('footer-rights', t.footerRights);
 }
 
 function injectComponents() {
@@ -81,19 +86,15 @@ function initScrollAnimations() {
         }
     });
 
-    // Estado inicial
     gsap.set("#fb-2, #fb-3, #fb-4", { opacity: 0, y: 50 });
     gsap.set("#fb-1", { opacity: 1, y: 0 });
 
-    // Secuencia de los 4 pasos
     tl.to("#fb-1", { opacity: 0, y: -50, duration: 1 })
       .call(() => setActiveImage("#f-img-2"))
       .to("#fb-2", { opacity: 1, y: 0, duration: 1 }, "<")
-      
       .to("#fb-2", { opacity: 0, y: -50, duration: 1 }, "+=0.5")
       .call(() => setActiveImage("#f-img-3"))
       .to("#fb-3", { opacity: 1, y: 0, duration: 1 }, "<")
-
       .to("#fb-3", { opacity: 0, y: -50, duration: 1 }, "+=0.5")
       .call(() => setActiveImage("#f-img-4"))
       .to("#fb-4", { opacity: 1, y: 0, duration: 1 }, "<");
