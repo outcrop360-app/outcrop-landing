@@ -1,3 +1,5 @@
+// js/main.js
+
 function setLanguage(lang) {
     document.documentElement.lang = lang;
     localStorage.setItem('preferredLang', lang);
@@ -38,6 +40,17 @@ function setLanguage(lang) {
 
     // Audiencia
     document.getElementById('audience-title').textContent = t.audienceTitle;
+
+    // Footer
+    document.getElementById('footer-product-title').textContent = t.footerProduct;
+    document.getElementById('footer-company-title').textContent = t.footerCompany;
+    document.getElementById('footer-support-title').textContent = t.footerSupport;
+    document.getElementById('footer-features').textContent = t.navFeatures;
+    document.getElementById('footer-plans').textContent = t.footerPlans;
+    document.getElementById('footer-about').textContent = t.footerAbout;
+    document.getElementById('footer-contact').textContent = t.footerContact;
+    document.getElementById('footer-help').textContent = t.footerHelp;
+    document.getElementById('footer-rights').textContent = t.footerRights;
 }
 
 function injectComponents() {
@@ -62,7 +75,7 @@ function initScrollAnimations() {
         scrollTrigger: {
             trigger: ".features-scroll-section",
             start: "top top",
-            end: "+=300%", // Más largo porque ahora son 4 pasos
+            end: "+=300%", 
             scrub: 1,
             pin: true,
         }
