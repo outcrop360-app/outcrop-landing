@@ -177,13 +177,25 @@ body.force-light .bg-rock {
     margin: 0 auto;
     padding: 140px 5% 80px; /* Espacio superior para el nav */
     align-items: flex-start;
+    /* Añadimos overflow visible para asegurar que el sticky funcione y no se corte nada */
+    overflow: visible; 
 }
 
 /* Índice Lateral Fijo */
 .legal-sidebar {
-    flex: 0 0 250px;
+    /* Forzamos un ancho estricto y evitamos que se encoja o crezca */
+    flex: 0 0 280px; 
+    width: 280px;
     position: sticky;
     top: 100px; /* Se queda pegado debajo del nav */
+    /* Añadimos un max-height y overflow para que el sidebar tenga scroll si es muy largo */
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    /* Ocultamos la barra de scroll para un look más limpio (opcional) */
+    scrollbar-width: none; /* Firefox */
+}
+.legal-sidebar::-webkit-scrollbar { 
+    display: none; /* Chrome, Safari, Edge */
 }
 
 .legal-sidebar nav {
@@ -198,6 +210,7 @@ body.force-light .bg-rock {
     padding: 12px 0;
     border-bottom: 1px solid var(--glass-border);
     transition: color 0.2s;
+    line-height: 1.4; /* Mejoramos la legibilidad si el texto ocupa dos líneas */
 }
 
 .legal-sidebar a:hover {
@@ -206,61 +219,8 @@ body.force-light .bg-rock {
 
 /* Contenido Principal */
 .legal-content-main {
-    flex: 1;
+    /* Nos aseguramos de que tome el espacio restante pero con un ancho mínimo */
+    flex: 1 1 0; 
+    min-width: 0; /* Previene desbordamientos en Flexbox */
     color: var(--text-main);
-}
-
-.legal-content-main h1 {
-    color: var(--text-main); /* Título en negro como Goodnotes */
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    margin-top: 0;
-    margin-bottom: 10px;
-    line-height: 1.2;
-}
-
-.legal-content-main .last-updated {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 40px;
-}
-
-.legal-content-main h2 {
-    color: var(--text-main);
-    font-size: 1.5rem;
-    margin-top: 60px;
-    margin-bottom: 20px;
-}
-
-.legal-content-main h3 {
-    color: var(--text-main);
-    font-size: 1.1rem;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.legal-content-main p, .legal-content-main ul {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-
-.legal-content-main ul { padding-left: 20px; }
-.legal-content-main li { margin-bottom: 10px; }
-.legal-content-main a { color: var(--brand-color); text-decoration: none; }
-.legal-content-main a:hover { text-decoration: underline; }
-
-/* Responsive para móviles */
-@media (max-width: 900px) {
-    .legal-layout {
-        flex-direction: column;
-        gap: 40px;
-        padding-top: 100px;
-    }
-    .legal-sidebar {
-        position: relative;
-        top: 0;
-        width: 100%;
-        flex: none;
-    }
 }
