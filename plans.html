@@ -30,14 +30,12 @@
 
     <div class="lang-es">
         <section class="plans-section">
-            
             <div class="plans-header">
                 <h1>Elige el plan perfecto para ti</h1>
                 <p>Desde estudiantes hasta corporaciones, tenemos las herramientas que necesitas para dominar el terreno.</p>
             </div>
 
             <div class="plans-grid">
-                
                 <div class="plan-card lito">
                     <div class="plan-card-inner">
                         <h2 class="plan-name">Lito</h2>
@@ -119,7 +117,7 @@
                 <button class="btn-toggle-matrix" id="btn-matrix-es" onclick="toggleMatrix()">Ver todas las características ▼</button>
             </div>
 
-            <div class="matrix-container" id="matrixContainer">
+            <div class="matrix-container" id="matrixContainerEs">
                 <table class="matrix-table">
                     <thead>
                         <tr>
@@ -174,12 +172,155 @@
                     </tbody>
                 </table>
             </div>
-
         </section>
     </div>
 
     <div class="lang-en">
-        </div>
+        <section class="plans-section">
+            <div class="plans-header">
+                <h1>Choose the perfect plan for you</h1>
+                <p>From students to corporations, we have the tools you need to master the field.</p>
+            </div>
+
+            <div class="plans-grid">
+                <div class="plan-card lito">
+                    <div class="plan-card-inner">
+                        <h2 class="plan-name">Lito</h2>
+                        <div class="plan-price">Free</div>
+                        <div class="plan-features-short">
+                            <p><span class="icon-check">✔️</span> 1 Device (Local)</p>
+                            <p><span class="icon-check">✔️</span> 1 Active Project</p>
+                            <p><span class="icon-check">✔️</span> Basic GIS Tools</p>
+                            <p><span class="icon-check">✔️</span> Basic Structural Compass</p>
+                            <p><span class="icon-cross">❌</span> No Cloud or Sync</p>
+                        </div>
+                        <a href="#" class="plan-btn lito">Start for Free</a>
+                    </div>
+                </div>
+
+                <div class="plan-card strato">
+                    <div class="plan-card-inner">
+                        <h2 class="plan-name">Strato</h2>
+                        <div class="plan-price">$4.99 <span>/ month</span></div>
+                        <div class="plan-features-short">
+                            <p><span class="icon-check">✔️</span> 1GB Cloud Storage</p>
+                            <p><span class="icon-check">✔️</span> 20 Synced Projects</p>
+                            <p><span class="icon-check">✔️</span> Live Location (15 min)</p>
+                            <p><span class="icon-check">✔️</span> PDF Maps & Reports (A4)</p>
+                            <p><span class="icon-check">✔️</span> 10 AI Queries per day</p>
+                        </div>
+                        <a href="#" class="plan-btn strato">Try Strato</a>
+                    </div>
+                </div>
+
+                <div class="plan-card magma">
+                    <div class="plan-badge">Recommended</div>
+                    <div class="plan-card-inner">
+                        <h2 class="plan-name">Magma</h2>
+                        <div class="plan-price">$9.99 <span>/ month</span></div>
+                        <div class="plan-features-short">
+                            <p><span class="icon-check">✔️</span> 10GB Cloud Storage</p>
+                            <p><span class="icon-check">✔️</span> 100 Projects (Favorites)</p>
+                            <p><span class="icon-check">✔️</span> Advanced PDF Reports</p>
+                            <p><span class="icon-check">✔️</span> All Stereograms</p>
+                            <p><span class="icon-check">✔️</span> 50 AI Queries per day</p>
+                        </div>
+                        <a href="#" class="plan-btn magma">Get Magma</a>
+                    </div>
+                </div>
+
+                <div class="plan-card students">
+                    <div class="plan-card-inner">
+                        <h2 class="plan-name">Students</h2>
+                        <div class="plan-price">$2.99 <span>/ month</span></div>
+                        <div class="plan-features-short">
+                            <p><span class="icon-check">✔️</span> 250MB Cloud Storage</p>
+                            <p><span class="icon-check">✔️</span> 5 Synced Projects</p>
+                            <p><span class="icon-check">✔️</span> Essential Premium Features</p>
+                            <p><span class="icon-check">✔️</span> 5 AI Queries per day</p>
+                            <p><span class="icon-check">✔️</span> Academic email required</p>
+                        </div>
+                        <a href="#" class="plan-btn students">Validate Email</a>
+                    </div>
+                </div>
+
+                <div class="plan-card corporate">
+                    <div class="plan-card-inner">
+                        <h2 class="plan-name">Corporate</h2>
+                        <div class="plan-price">Custom</div>
+                        <div class="plan-features-short">
+                            <p><span class="icon-check">✔️</span> 5 Devices per license</p>
+                            <p><span class="icon-check">✔️</span> 10GB Cloud Storage</p>
+                            <p><span class="icon-check">✔️</span> 100 Shared Projects</p>
+                            <p><span class="icon-check">✔️</span> Full AI Assistant</p>
+                            <p><span class="icon-check">✔️</span> Priority B2B Support</p>
+                        </div>
+                        <a href="#" class="plan-btn corporate">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="compare-action">
+                <button class="btn-toggle-matrix" id="btn-matrix-en" onclick="toggleMatrix()">See full comparison ▼</button>
+            </div>
+
+            <div class="matrix-container" id="matrixContainerEn">
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>LITO</th>
+                            <th>STRATO</th>
+                            <th>MAGMA</th>
+                            <th>STUDENTS</th>
+                            <th>CORPORATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="category-row"><td colspan="6">DEVICES</td></tr>
+                        <tr><td>Devices</td><td>1 (local)</td><td>1</td><td>3</td><td>1</td><td>5</td></tr>
+                        <tr><td>Cloud Storage</td><td><span class="icon-cross">❌</span></td><td>1 GB</td><td>10 GB</td><td>250 MB</td><td>10 GB</td></tr>
+                        
+                        <tr class="category-row"><td colspan="6">PROJECTS</td></tr>
+                        <tr><td>Project Limit</td><td>1</td><td>20</td><td>100</td><td>5</td><td>100</td></tr>
+                        <tr><td>Storage</td><td>Local</td><td>Cloud</td><td>Cloud</td><td>Cloud</td><td>Cloud</td></tr>
+                        <tr><td>Synchronization</td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+                        <tr><td>Share Projects</td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+                        <tr><td>Favorite Projects</td><td><span class="icon-cross">❌</span></td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td></tr>
+
+                        <tr class="category-row"><td colspan="6">FIELDBOOK</td></tr>
+                        <tr><td>PDF Reports</td><td><span class="icon-cross">❌</span></td><td>A4 vertical only</td><td><span class="icon-check">✔️</span> All</td><td>A4 vertical only</td><td><span class="icon-check">✔️</span> All</td></tr>
+                        <tr><td>AI Writing Assistant</td><td><span class="icon-cross">❌</span></td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td></tr>
+
+                        <tr class="category-row"><td colspan="6">ADVANCED MAPS</td></tr>
+                        <tr><td>Points, lines, and polygons</td><td>Local</td><td>Cloud</td><td>Cloud</td><td>Cloud</td><td>Cloud</td></tr>
+                        <tr><td>Live Location</td><td><span class="icon-cross">❌</span></td><td>15 min</td><td><span class="icon-check">✔️</span> Unlimited</td><td><span class="icon-check">✔️</span> Unlimited</td><td><span class="icon-check">✔️</span> Unlimited</td></tr>
+                        <tr><td>Import/Export KMZ</td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+
+                        <tr class="category-row"><td colspan="6">TECHNICAL CAMERA</td></tr>
+                        <tr><td>Data Stamp (GPS, Azimuth)</td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+                        <tr><td>On-Screen Angle Meter (AR)</td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+
+                        <tr class="category-row"><td colspan="6">MEASUREMENT LOGS (STRIP LOGS)</td></tr>
+                        <tr><td>Logs per project</td><td>1</td><td>10</td><td>Unlimited</td><td>5</td><td>Unlimited</td></tr>
+                        <tr><td>Export CSV / PDF</td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+
+                        <tr class="category-row"><td colspan="6">COMPASS AND STEREOGRAMS</td></tr>
+                        <tr><td>Wulff Projection</td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+                        <tr><td>Schmidt Projection</td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+                        <tr><td>Contour / Rose Diagrams</td><td><span class="icon-cross">❌</span></td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td></tr>
+
+                        <tr class="category-row"><td colspan="6">GLOBAL SEARCH AND AI</td></tr>
+                        <tr><td>OutcropAI queries per day</td><td>0</td><td>10</td><td>50</td><td>5</td><td>50</td></tr>
+                        
+                        <tr class="category-row"><td colspan="6">RESOURCE LIBRARY</td></tr>
+                        <tr><td>View limit</td><td>5 per day</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+                        <tr><td>Save to Favorites (Offline)</td><td><span class="icon-cross">❌</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td><td><span class="icon-check">✔️</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -228,5 +369,27 @@
 
     <script src="js/translations.js"></script>
     <script src="js/main.js"></script>
+    
+    <script>
+        function toggleMatrix() {
+            const containerEs = document.getElementById('matrixContainerEs');
+            const containerEn = document.getElementById('matrixContainerEn');
+            const buttonEs = document.getElementById('btn-matrix-es');
+            const buttonEn = document.getElementById('btn-matrix-en');
+            
+            if(containerEs) containerEs.classList.toggle('expanded');
+            if(containerEn) containerEn.classList.toggle('expanded');
+            
+            const isExpanded = containerEs ? containerEs.classList.contains('expanded') : false;
+            
+            if (isExpanded) {
+                if (buttonEs) buttonEs.textContent = "Ocultar características ▲";
+                if (buttonEn) buttonEn.textContent = "Hide full comparison ▲";
+            } else {
+                if (buttonEs) buttonEs.textContent = "Ver todas las características ▼";
+                if (buttonEn) buttonEn.textContent = "See full comparison ▼";
+            }
+        }
+    </script>
 </body>
 </html>
