@@ -512,14 +512,84 @@ html[lang="es"] .lang-en { display: none !important; }
     .plan-card.magma:hover { transform: translateY(-10px); }
 }
 
-/* --- HERO PARA PÁGINA DE PLANES --- */
+/* ========================================== */
+/* --- HERO PLANES (ACTUALIZADO - Logos desordenados) --- */
+/* ========================================== */
+
+/* 1. Configuración de la sección hero de planes */
 .plans-hero {
-    min-height: 60vh;
-    padding-top: 150px;
-    padding-bottom: 20px;
+    min-height: 80vh; /* Más alta para lucir el fondo de roca */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    overflow: hidden; /* Encierra los logos scattered */
 }
 
-.plans-hero .phone-mockup {
-    transform: rotate(8deg) scale(0.9);
-    box-shadow: -20px 30px 60px rgba(0,0,0,0.8);
+/* 2. Scoping del fondo de roca SOLO para este header */
+.plans-hero .bg-rock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Detrás de todo */
+    display: block !important;
+}
+
+.plans-hero .hero-content {
+    max-width: 650px;
+    text-align: center;
+    z-index: 3; /* Encima de los logos y la roca */
+}
+
+/* 3. Contenedor de logos scattered (desordenados) */
+.scattered-visual {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Entre la roca y el texto */
+    pointer-events: none; /* No bloquea clics al footer o nav */
+}
+
+.scattered-logo {
+    position: absolute;
+    opacity: 0.8;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
+    /* Usamos mask-image para rellenar con el gradiente del plan */
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* 4. Posicionamiento individual desordenado (scattered) */
+.scattered-logo.logo-1 { top: 15%; right: 5%; width: 130px; height: 130px; transform: rotate(-15deg); background: var(--plan-strato); }
+.scattered-logo.logo-2 { top: 35%; right: 18%; width: 100px; height: 100px; transform: rotate(10deg); background: var(--plan-magma); }
+.scattered-logo.logo-3 { top: 60%; right: 2%; width: 110px; height: 110px; transform: rotate(-5deg); background: var(--plan-lito); }
+.scattered-logo.logo-4 { top: 20%; right: 28%; width: 90px; height: 90px; transform: rotate(20deg); background: var(--plan-students); opacity: 0.6; }
+.scattered-logo.logo-5 { top: 55%; right: 30%; width: 120px; height: 120px; transform: rotate(-25deg); background: var(--plan-corporate); }
+
+/* 5. Asegurar fondos sólidos para el resto de la página */
+.plans-section {
+    background-color: var(--bg-color); /* Fondo sólido */
+    position: relative;
+    z-index: 10; /* Encima del hero absoluto si colisionan */
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.matrix-table th {
+    background-color: var(--surface-color); /* Fondo sólido en th sticky */
+}
+
+/* Responsive para ocultar logos en móviles si tapan mucho */
+@media (max-width: 900px) {
+    .scattered-visual { display: none; }
+    .plans-hero { min-height: 60vh; padding-top: 140px; }
 }
