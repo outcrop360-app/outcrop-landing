@@ -582,23 +582,23 @@ html { scroll-behavior: smooth; }
 /* Contenedor de logos scattered (desordenados) */
 .scattered-visual {
     position: relative;
-    width: 500px;
-    height: 400px;
+    width: 600px; /* Aumentamos el lienzo a lo ancho */
+    height: 500px; /* Aumentamos el lienzo a lo alto */
     z-index: 2;
 }
 
 .scattered-logo {
     position: absolute;
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); /* Sombra más amplia para el nuevo tamaño */
     object-fit: contain;
 }
 
-/* Posicionamiento individual de tus PNGs */
-.scattered-logo.logo-1 { top: 5%; right: 10%; width: 150px; transform: rotate(-15deg); }  /* Strato */
-.scattered-logo.logo-2 { top: 40%; right: 45%; width: 120px; transform: rotate(10deg); z-index: 3;}   /* Magma */
-.scattered-logo.logo-3 { top: 65%; right: 5%; width: 130px; transform: rotate(-5deg); }    /* Lito */
-.scattered-logo.logo-4 { top: 15%; right: 60%; width: 100px; transform: rotate(20deg); opacity: 0.9; } /* Students */
-.scattered-logo.logo-5 { top: 75%; right: 50%; width: 140px; transform: rotate(-25deg); }  /* Corporate */
+/* Posicionamiento individual de tus PNGs (TAMAÑOS AUMENTADOS) */
+.scattered-logo.logo-1 { top: 0%; right: 5%; width: 240px; transform: rotate(-15deg); }  /* Strato */
+.scattered-logo.logo-2 { top: 35%; right: 40%; width: 190px; transform: rotate(10deg); z-index: 3;}   /* Magma */
+.scattered-logo.logo-3 { top: 60%; right: 0%; width: 210px; transform: rotate(-5deg); }    /* Lito */
+.scattered-logo.logo-4 { top: 10%; right: 65%; width: 160px; transform: rotate(20deg); opacity: 0.9; } /* Students */
+.scattered-logo.logo-5 { top: 75%; right: 45%; width: 220px; transform: rotate(-25deg); }  /* Corporate */
 
 /* Asegurar fondos sólidos para el resto de la página */
 .plans-section {
@@ -613,12 +613,12 @@ html { scroll-behavior: smooth; }
     .plans-hero { padding-top: 100px; }
     .plans-hero-container { flex-direction: column; text-align: center; }
     .plans-hero .hero-content { text-align: center; margin-bottom: 40px; max-width: 100%; }
-    .scattered-visual { width: 100%; height: 350px; }
+    .scattered-visual { width: 100%; height: 450px; } /* Más alto en móvil para que respiren */
     
-    /* Ajustar tamaños en móviles */
-    .scattered-logo.logo-1 { top: 0%; right: 5%; width: 110px; }
-    .scattered-logo.logo-2 { top: 35%; right: 35%; width: 90px; }
-    .scattered-logo.logo-3 { top: 60%; right: 5%; width: 100px; }
-    .scattered-logo.logo-4 { top: 10%; right: 65%; width: 80px; }
-    .scattered-logo.logo-5 { top: 70%; right: 60%; width: 110px; }
+    /* Tamaños aumentados proporcionalmente en móviles */
+    .scattered-logo.logo-1 { top: 0%; right: 5%; width: 150px; }
+    .scattered-logo.logo-2 { top: 35%; right: 35%; width: 130px; }
+    .scattered-logo.logo-3 { top: 60%; right: 5%; width: 140px; }
+    .scattered-logo.logo-4 { top: 10%; right: 65%; width: 110px; }
+    .scattered-logo.logo-5 { top: 70%; right: 55%; width: 150px; }
 }
