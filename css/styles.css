@@ -284,3 +284,230 @@ body.force-light .bg-rock {
 /* --- CONTROL DE IDIOMAS (Para páginas estáticas largas) --- */
 html[lang="en"] .lang-es { display: none !important; }
 html[lang="es"] .lang-en { display: none !important; }
+
+/* ========================================== */
+/* --- PLANES (COMPARE PLANS) --- */
+/* ========================================== */
+
+/* 1. Gradientes exportados de AppBrush.kt */
+:root {
+    --plan-lito: #9E4632;
+    --plan-strato: linear-gradient(135deg, #1B5E20, #4CAF50, #81C784);
+    --plan-magma: linear-gradient(135deg, #4285F4, #9C27B0, #E91E63);
+    --plan-students: linear-gradient(135deg, #004D40, #0277BD, #26A69A);
+    --plan-corporate: linear-gradient(135deg, #F57F17, #FFB300, #FFCA28);
+}
+
+.plans-section {
+    padding: 140px 5% 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.plans-header h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.plans-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+}
+
+/* 2. Tarjetas de Planes (Estilo Goodnotes) */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+.plan-card {
+    background: var(--surface-color);
+    border-radius: 20px;
+    padding: 3px; /* Espacio para el borde de gradiente */
+    position: relative;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Borde de gradiente dinámico */
+.plan-card.lito { background: var(--plan-lito); }
+.plan-card.strato { background: var(--plan-strato); }
+.plan-card.magma { background: var(--plan-magma); transform: scale(1.05); z-index: 2; box-shadow: 0 15px 30px rgba(156, 39, 176, 0.2); }
+.plan-card.magma:hover { transform: scale(1.05) translateY(-10px); }
+.plan-card.students { background: var(--plan-students); }
+.plan-card.corporate { background: var(--plan-corporate); }
+
+.plan-card-inner {
+    background: var(--surface-color);
+    border-radius: 17px;
+    padding: 30px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.plan-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--plan-magma);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.plan-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Aplicando el gradiente al texto del título */
+.plan-card.lito .plan-name { background-image: linear-gradient(to right, #9E4632, #9E4632); }
+.plan-card.strato .plan-name { background-image: var(--plan-strato); }
+.plan-card.magma .plan-name { background-image: var(--plan-magma); }
+.plan-card.students .plan-name { background-image: var(--plan-students); }
+.plan-card.corporate .plan-name { background-image: var(--plan-corporate); }
+
+.plan-price { font-size: 1.2rem; color: var(--text-main); font-weight: 600; margin-bottom: 20px; }
+.plan-price span { font-size: 0.8rem; color: var(--text-secondary); font-weight: 400; }
+
+.plan-features-short {
+    text-align: left;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.plan-features-short p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 10px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.plan-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    transition: opacity 0.3s;
+}
+
+.plan-btn:hover { opacity: 0.9; }
+
+.plan-btn.lito { background: var(--plan-lito); }
+.plan-btn.strato { background: var(--plan-strato); }
+.plan-btn.magma { background: var(--plan-magma); }
+.plan-btn.students { background: var(--plan-students); }
+.plan-btn.corporate { background: var(--plan-corporate); }
+
+/* 3. Botón y Contenedor de la Tabla Detallada */
+.compare-action {
+    margin-top: 60px;
+}
+
+.btn-toggle-matrix {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-main);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-toggle-matrix:hover {
+    border-color: var(--brand-color);
+    color: var(--brand-color);
+}
+
+.matrix-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    opacity: 0;
+    margin-top: 40px;
+}
+
+.matrix-container.expanded {
+    max-height: 5000px; /* Suficiente para la tabla */
+    opacity: 1;
+    transition: max-height 1s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* 4. La Tabla (Matriz) */
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.matrix-table th {
+    position: sticky;
+    top: 70px;
+    background: var(--surface-color);
+    padding: 15px;
+    font-weight: 700;
+    z-index: 2;
+    border-bottom: 2px solid var(--glass-border);
+}
+
+.matrix-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.matrix-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: var(--text-secondary);
+    width: 25%;
+}
+
+.matrix-table tr.category-row td {
+    background: var(--glass-bg);
+    text-align: left;
+    font-weight: 700;
+    color: var(--brand-color);
+    padding-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: none;
+    letter-spacing: 1px;
+}
+
+.icon-check { color: #4CAF50; font-weight: bold; }
+.icon-cross { color: #555555; opacity: 0.5; }
+
+@media (max-width: 900px) {
+    .matrix-table { display: block; overflow-x: auto; white-space: nowrap; }
+    .plan-card.magma { transform: none; }
+    .plan-card.magma:hover { transform: translateY(-10px); }
+}
