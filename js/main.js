@@ -100,6 +100,23 @@ function initScrollAnimations() {
       .to("#fb-4", { opacity: 1, y: 0, duration: 1 }, "<");
 }
 
+// Función para mostrar/ocultar la tabla de comparación detallada
+function toggleMatrix() {
+    const container = document.getElementById('matrixContainer');
+    const buttonEs = document.getElementById('btn-matrix-es');
+    const buttonEn = document.getElementById('btn-matrix-en');
+    
+    container.classList.toggle('expanded');
+    
+    if (container.classList.contains('expanded')) {
+        if (buttonEs) buttonEs.textContent = "Ocultar características ▲";
+        if (buttonEn) buttonEn.textContent = "Hide full comparison ▲";
+    } else {
+        if (buttonEs) buttonEs.textContent = "Ver todas las características ▼";
+        if (buttonEn) buttonEn.textContent = "See full comparison ▼";
+    }
+}
+
 window.onload = function() {
     injectComponents();
     const savedLang = localStorage.getItem('preferredLang');
