@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="force-light">
+<body>
+
+    <div class="bg-rock"></div>
 
     <nav>
         <a href="home.html" class="nav-brand">
@@ -29,12 +31,19 @@
     </nav>
 
     <div class="lang-es">
-        <section class="plans-section">
-            <div class="plans-header">
-                <h1>Elige el plan perfecto para ti</h1>
-                <p>Desde estudiantes hasta corporaciones, tenemos las herramientas que necesitas para dominar el terreno.</p>
+        <header class="hero plans-hero">
+            <div class="hero-content">
+                <h1>Desbloquea todo el poder de <span>Outcrop360</span></h1>
+                <p>Descarga la aplicación gratis y elige el plan que mejor se adapte a tu trabajo en el campo.</p>
             </div>
+            <div class="hero-visual">
+                <div class="phone-mockup levitate-1">
+                    <img src="app_screenshot_dark.png" alt="Outcrop360 App" class="app-screenshot">
+                </div>
+            </div>
+        </header>
 
+        <section class="plans-section" style="padding-top: 20px;">
             <div class="plans-grid">
                 <div class="plan-card lito">
                     <div class="plan-card-inner">
@@ -176,12 +185,19 @@
     </div>
 
     <div class="lang-en">
-        <section class="plans-section">
-            <div class="plans-header">
-                <h1>Choose the perfect plan for you</h1>
-                <p>From students to corporations, we have the tools you need to master the field.</p>
+        <header class="hero plans-hero">
+            <div class="hero-content">
+                <h1>Unlock the full power of <span>Outcrop360</span></h1>
+                <p>Download the app for free and choose the plan that best fits your fieldwork needs.</p>
             </div>
+            <div class="hero-visual">
+                <div class="phone-mockup levitate-1">
+                    <img src="app_screenshot_dark.png" alt="Outcrop360 App" class="app-screenshot">
+                </div>
+            </div>
+        </header>
 
+        <section class="plans-section" style="padding-top: 20px;">
             <div class="plans-grid">
                 <div class="plan-card lito">
                     <div class="plan-card-inner">
@@ -369,7 +385,6 @@
 
     <script src="js/translations.js"></script>
     <script src="js/main.js"></script>
-    
     <script>
         function toggleMatrix() {
             const containerEs = document.getElementById('matrixContainerEs');
