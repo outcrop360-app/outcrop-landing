@@ -6,10 +6,15 @@
     <title>Outcrop360 | Compare Plans</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Definición inline del SVG Logo como máscara para usar los gradientes CSS */
+        .scattered-logo {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z' fill='black'/%3E%3Ccircle cx='50' cy='50' r='20' fill='white'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z' fill='black'/%3E%3Ccircle cx='50' cy='50' r='20' fill='white'/%3E%3C/svg%3E");
+        }
+    </style>
 </head>
 <body>
-
-    <div class="bg-rock"></div>
 
     <nav>
         <a href="home.html" class="nav-brand">
@@ -32,18 +37,23 @@
 
     <div class="lang-es">
         <header class="hero plans-hero">
+            <div class="bg-rock"></div>
+            
             <div class="hero-content">
                 <h1>Desbloquea todo el poder de <span>Outcrop360</span></h1>
-                <p>Descarga la aplicación gratis y elige el plan que mejor se adapte a tu trabajo en el campo.</p>
+                <p>Elige el plan que mejor se adapte a tu trabajo en el campo. Domina el terreno con herramientas de precisión SIG.</p>
             </div>
-            <div class="hero-visual">
-                <div class="phone-mockup levitate-1">
-                    <img src="app_screenshot_dark.png" alt="Outcrop360 App" class="app-screenshot">
-                </div>
+
+            <div class="scattered-visual">
+                <div class="scattered-logo logo-1 levitate-1"></div>
+                <div class="scattered-logo logo-2 levitate-2"></div>
+                <div class="scattered-logo logo-3 levitate-1"></div>
+                <div class="scattered-logo logo-4 levitate-2"></div>
+                <div class="scattered-logo logo-5 levitate-1"></div>
             </div>
         </header>
 
-        <section class="plans-section" style="padding-top: 20px;">
+        <section class="plans-section">
             <div class="plans-grid">
                 <div class="plan-card lito">
                     <div class="plan-card-inner">
@@ -186,18 +196,23 @@
 
     <div class="lang-en">
         <header class="hero plans-hero">
+            <div class="bg-rock"></div>
+            
             <div class="hero-content">
                 <h1>Unlock the full power of <span>Outcrop360</span></h1>
-                <p>Download the app for free and choose the plan that best fits your fieldwork needs.</p>
+                <p>Choose the plan that best fits your needs. Master the field with precision GIS tools.</p>
             </div>
-            <div class="hero-visual">
-                <div class="phone-mockup levitate-1">
-                    <img src="app_screenshot_dark.png" alt="Outcrop360 App" class="app-screenshot">
-                </div>
+
+            <div class="scattered-visual">
+                <div class="scattered-logo logo-1 levitate-1"></div>
+                <div class="scattered-logo logo-2 levitate-2"></div>
+                <div class="scattered-logo logo-3 levitate-1"></div>
+                <div class="scattered-logo logo-4 levitate-2"></div>
+                <div class="scattered-logo logo-5 levitate-1"></div>
             </div>
         </header>
 
-        <section class="plans-section" style="padding-top: 20px;">
+        <section class="plans-section">
             <div class="plans-grid">
                 <div class="plan-card lito">
                     <div class="plan-card-inner">
