@@ -511,3 +511,15 @@ html[lang="es"] .lang-en { display: none !important; }
     .plan-card.magma { transform: none; }
     .plan-card.magma:hover { transform: translateY(-10px); }
 }
+
+/* --- HERO PARA PÁGINA DE PLANES --- */
+.plans-hero {
+    min-height: 60vh;
+    padding-top: 150px;
+    padding-bottom: 20px;
+}
+
+.plans-hero .phone-mockup {
+    transform: rotate(8deg) scale(0.9);
+    box-shadow: -20px 30px 60px rgba(0,0,0,0.8);
+}
